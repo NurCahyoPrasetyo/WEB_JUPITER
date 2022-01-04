@@ -4,6 +4,7 @@ import React, { Component } from "react";
 import Token from "../abis/Token.json";
 import dbank from "../dbank.png";
 import Web3 from "web3";
+import Register from "./modal/Register";
 import "./App.css";
 
 //h0m3w0rk - add new tab to check accrued interest
@@ -38,8 +39,10 @@ class App extends Component {
           dBank.networks[netId].address
         );
         const dBankAddress = dBank.networks[netId].address;
-        const tokenBalance = await token.methods.balanceOf(this.state.account).call()
-        console.log('tokenBalance =>', Web3.utils.fromWei(tokenBalance))
+        const tokenBalance = await token.methods
+          .balanceOf(this.state.account)
+          .call();
+        console.log("tokenBalance =>", Web3.utils.fromWei(tokenBalance));
 
         this.setState({
           token: token,
@@ -56,22 +59,26 @@ class App extends Component {
   }
 
   async deposit(amount) {
-    if(this.state.dbank!=='undefined'){
-      try{
-        await this.state.dbank.methods.deposit().send({value: amount.toString(), from: this.state.account})
+    if (this.state.dbank !== "undefined") {
+      try {
+        await this.state.dbank.methods
+          .deposit()
+          .send({ value: amount.toString(), from: this.state.account });
       } catch (e) {
-        console.log('Error, deposit: ', e)
+        console.log("Error, deposit: ", e);
       }
     }
   }
 
   async withdraw(e) {
-    e.preventDefault()
-    if(this.state.dbank!=='undefined'){
-      try{
-        await this.state.dbank.methods.withdraw().send({from: this.state.account})
-      } catch(e) {
-        console.log('Error, withdraw: ', e)
+    e.preventDefault();
+    if (this.state.dbank !== "undefined") {
+      try {
+        await this.state.dbank.methods
+          .withdraw()
+          .send({ from: this.state.account });
+      } catch (e) {
+        console.log("Error, withdraw: ", e);
       }
     }
   }
@@ -101,6 +108,9 @@ class App extends Component {
             <img src={dbank} className="App-logo" alt="logo" height="32" />
             <b>dBank</b>
           </a>
+          <div className="m-2">
+            <Register />
+          </div>
         </nav>
         <div className="container-fluid mt-5 text-center">
           <br></br>
@@ -118,12 +128,14 @@ class App extends Component {
                       <p className="mb-1">
                         (1 deposit is possible at the time)
                       </p>
-                      <form onSubmit={(e) => {
-                        e.preventDefault()
-                        let amount = this.depositAmount.value
-                        amount = amount * 10**18 //convert to wei
-                        this.deposit(amount)
-                      }}>
+                      <form
+                        onSubmit={(e) => {
+                          e.preventDefault();
+                          let amount = this.depositAmount.value;
+                          amount = amount * 10 ** 18; //convert to wei
+                          this.deposit(amount);
+                        }}
+                      >
                         <div className="form-group mr-sm-2">
                           <input
                             id="depositAmount"
@@ -146,7 +158,13 @@ class App extends Component {
                   <Tab eventKey="withdraw" title="Withdraw">
                     <div className="p-4">
                       <p>Do you now Withdraw + take interest ?</p>
-                      <button type='submit' className='btn btn-primary' onClick={(e) => this.withdraw(e)}>WITHDRAW</button>
+                      <button
+                        type="submit"
+                        className="btn btn-primary"
+                        onClick={(e) => this.withdraw(e)}
+                      >
+                        WITHDRAW
+                      </button>
                     </div>
                   </Tab>
                 </Tabs>

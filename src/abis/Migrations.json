@@ -52,7 +52,7 @@
   "sourceMap": "68:367:4:-:0;;;116:10;93:33;;;;;;;;;;;;;;;;;;;;68:367;;;;;;;;;;;;;;;;",
   "deployedSourceMap": "68:367:4:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;131:36;;;:::i;:::-;;;;;;;;;;;;;;;;;;;93:33;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;327:105;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;131:36;;;;:::o;93:33::-;;;;;;;;;;;;:::o;327:105::-;233:5;;;;;;;;;;219:19;;:10;:19;;;203:104;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;417:9:::1;390:24;:36;;;;327:105:::0;:::o",
   "source": "// SPDX-License-Identifier: MIT\r\npragma solidity >=0.6.0 <0.8.0;\r\n\r\ncontract Migrations {\r\n  address public owner = msg.sender;\r\n  uint public last_completed_migration;\r\n\r\n  modifier restricted() {\r\n    require(\r\n      msg.sender == owner,\r\n      \"This function is restricted to the contract's owner\"\r\n    );\r\n    _;\r\n  }\r\n\r\n  function setCompleted(uint completed) public restricted {\r\n    last_completed_migration = completed;\r\n  }\r\n}",
-  "sourcePath": "D:\\Documents\\ProjekCode\\NFT_CHALLAGE\\web3\\src\\contracts\\Migrations.sol",
+  "sourcePath": "D:\\Documents\\ProjekCode\\AGATE\\JUPITER\\WEB_JUPITER\\src\\contracts\\Migrations.sol",
   "ast": {
     "absolutePath": "project:/src/contracts/Migrations.sol",
     "exportedSymbols": {
@@ -891,12 +891,12 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0x0729e55535e8Ff75d6d8f06dF3BB406d9fCBB5e9",
-      "transactionHash": "0x658fcec617308ad20f4cfc68d4d4845a912cea17414de08332971ad8db981e06"
+      "address": "0x8F14E1Bb090f42eD06585442792661E69dD2cF82",
+      "transactionHash": "0x51e2a9c9151e9080574223149f5201b385aae3a7e17cac3b59df3d2951e345ed"
     }
   },
   "schemaVersion": "3.4.4",
-  "updatedAt": "2022-01-03T07:10:36.617Z",
+  "updatedAt": "2022-01-04T07:29:47.924Z",
   "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",
